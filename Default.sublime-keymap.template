@@ -25,6 +25,9 @@
                "operand": true,
                "operator": "equal"}],
   "keys": ["alt+a"]},
+  
+ // This badboy will add auto selections at the extents of the selection spans
+ {"keys" : ["ctrl+shift+k"], "command": "split_extents", "context" : [ ]},
 
  // TODO, what was this about ???
  // {"args": {},
