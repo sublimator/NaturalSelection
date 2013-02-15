@@ -1,0 +1,95 @@
+[
+ // auto_select
+
+ {"args": {"cmd": "init"},
+  "command": "auto_select",
+  "context": [{"key": "setting.auto_select",
+               "operand": false,
+               "operator": "equal"}],
+  "keys": ["alt+a"]},
+
+ {"args": {"cmd": "merge"},
+  "command": "auto_select",
+  "context": [{"key": "setting.auto_select",
+               "operand": true,
+               "operator": "equal"}],
+  "keys": ["alt+a"]},
+
+ {"args": {"cmd": "store_emptys"},
+  "command": "auto_select",
+  "context": [{"key": "setting.auto_select",
+               "operand": true,
+               "operator": "equal"},
+              {"key": "selection_empty",
+               "match_all": true,
+               "operand": true,
+               "operator": "equal"}],
+  "keys": ["alt+a"]},
+
+ // TODO, what was this about ???
+ // {"args": {},
+ //  "command": "single_selection",
+ //  "context": [{"key": "setting.auto_select",
+ //               "operand": true,
+ //               "operator": "equal"},
+ //              {"key": "num_selections", "operand": 1, "operator": "equal"}],
+ //  "keys": ["escape"]},
+
+ // {"args": {"cmd": "merge"},
+ //  "command": "auto_select",
+ //  "context": [{"key": "setting.auto_select",
+ //               "operand": true,
+ //               "operator": "equal"},
+ //              {"key": "num_selections", "operand": 1, "operator": "equal"}],
+ //  "keys": ["escape"]},
+
+ // indexable_single_select
+ {"command": "indexable_single_select",
+  "context": [],
+  "keys": ["shift+escape"]},
+
+ // auto_increment
+ {"args": {},
+  "command": "auto_increment",
+  "context": [{"key": "num_selections",
+               "operand": 1,
+               "operator": "not_equal"},
+              {"key": "selection_empty",
+               "match_all": true,
+               "operand": true,
+               "operator": "equal"}],
+  "keys": ["ctrl+alt+shift+4"]},
+
+ // modulo_selections
+ {"args": {"m": "2", "n": "1"},
+  "command": "modulo_selections",
+  "context": [],
+  "keys": ["ctrl+alt+shift+5"]},
+
+ // remove_duplicate_selections
+ {"args": {},
+  "command": "remove_duplicate_selections",
+  "context": [],
+  "keys": ["ctrl+alt+shift+1"]},
+
+ // restrict_selections_to_visible_region
+ {"args": {},
+  "command": "restrict_selections_to_visible_region",
+  "context": [],
+  "keys": ["ctrl+alt+shift+v"]},
+
+ // remove_empty_selections
+ {"args": {},
+  "command": "remove_empty_selections",
+  "context": [],
+  "keys": ["ctrl+alt+shift+8"]},
+
+ // invert_and_shrink_wrap_regions
+ {"args": {},
+  "command": "invert_and_shrink_wrap_regions",
+  "context": [],
+  "keys": ["ctrl+alt+shift+9"]},
+
+ // half_selections
+ {"args": {}, "command": "half_selections", "context": [], "keys": ["alt+w"]}
+]
