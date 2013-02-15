@@ -18,7 +18,6 @@ def sel_direction(sel, zero=1):
 ################################### LISTENERS ##################################
 
 class ListenUp(sublime_plugin.EventListener):
-    routine   = None
     trend     = 1
     last_pt   = 0
 
@@ -40,9 +39,7 @@ class HalfSelections(sublime_plugin.TextCommand):
             r = self.routine = self.magic_routine(edit)
             next(r)
         else:
-            try:                    self.routine.send(edit)
-            except StopIteration:   "Not so exceptional"
-            finally:                self.routine = None
+            for gear in self.routine: gear
 
     def magic_routine(self, edit):
         view      = self.view
@@ -51,7 +48,7 @@ class HalfSelections(sublime_plugin.TextCommand):
         dirs_sels = zip([sel_direction(s, trend) for s in sels], sels)
         view.settings().set('half_selections', True)
 
-        edit = (yield)
+        yield
 
         view.settings().set('half_selections', False)
         for (direction,  old_sel), sel in zip(dirs_sels, view.sel()):
