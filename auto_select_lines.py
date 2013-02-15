@@ -42,13 +42,13 @@ class auto_select_lines(sublime_plugin.TextCommand):
         additional_selections = []
         x_extent, y_extent = view.layout_extent()
 
-        for leader_x_val, (leader_r, leader_y) in unique_pts_first_sels.items():
+        for leader_x_val, (leader_sel, leader_y) in unique_pts_first_sels.items():
             leader_is_space = []
 
-            start_scope = view.scope_name(leader_r.begin()).rstrip()
+            start_scope = view.scope_name(leader_sel.begin()).rstrip()
             for offset in (0, -1):
                 leader_is_space.append (
-                        view.substr(leader_r.begin() + offset).isspace())
+                        view.substr(leader_sel.begin() + offset).isspace())
 
             for direction, direction_repr, forward in direction_iterator():
                 n = 0
