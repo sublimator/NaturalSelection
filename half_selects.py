@@ -34,23 +34,26 @@ class ListenUp(sublime_plugin.EventListener):
 ################################### COMMANDS ###################################
 
 class HalfSelections(sublime_plugin.TextCommand):
-    def run(self, edit, init=True):
-        if init:
-            r = self.routine = self.magic_routine(edit)
-            next(r)
-        else:
-            for gear in self.routine: gear
+    def set_waiting(self, val):
+        self.view.settings().set('half_selections', val)
 
-    def magic_routine(self, edit):
+    def run(self, edit, init=True):
+        self.set_waiting(init is True)
+
+        if init:
+            self.two_stage = self.continues_on_selection_modified()
+            next(self.two_stage)
+        else:
+            for stage in self.two_stage: stage
+
+    def continues_on_selection_modified(self):
         view      = self.view
         sels      = list(view.sel())
         trend     = ListenUp.trend
         dirs_sels = zip([sel_direction(s, trend) for s in sels], sels)
-        view.settings().set('half_selections', True)
 
         yield
 
-        view.settings().set('half_selections', False)
         for (direction,  old_sel), sel in zip(dirs_sels, view.sel()):
             if direction and old_sel != sel:
                 half = None
