@@ -1,0 +1,5 @@
+=== Description === 
+
+Commands for doing multiple selections (including non contiguous) via the
+keyboard.  Sublime Text 3 only. Docs to come ...
+
