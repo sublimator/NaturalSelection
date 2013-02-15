@@ -48,19 +48,29 @@
  // pop selections
  {"args": {"forward": false},
   "command": "pop_selections",
-  "context": [{"key": "selection_empty",
-               "match_all": true,
-               "operand": false,
-               "operator": "equal"},
-              {"key": "num_selections", "operand": 1, "operator": "not_equal"}],
+  "context": [
+            
+            // 
+            /*{"key": "selection_empty",
+             "match_all": true,
+             "operand": false,
+             "operator": "equal"}, */
+             
+              {"key": "num_selections", "operand": 1, "operator": "not_equal"}
+              ],
   "keys": ["ctrl+alt+shift+up"]}, 
  {"args": {"forward": true},
  "command": "pop_selections",
- "context": [{"key": "selection_empty",
+ "context": [
+            
+            // 
+            /*{"key": "selection_empty",
              "match_all": true,
              "operand": false,
-             "operator": "equal"},
-            {"key": "num_selections", "operand": 1, "operator": "not_equal"}],
+             "operator": "equal"}, */
+             
+            {"key": "num_selections", "operand": 1, "operator": "not_equal"}
+            ],
  "keys": ["ctrl+alt+shift+down"]},
 
 
