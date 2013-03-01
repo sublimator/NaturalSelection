@@ -52,15 +52,13 @@ class AutoSelectListener(sublime_plugin.EventListener):
 
     def on_selection_modified(self, view):
         if view.settings().get(KEY):
-            has_one_sel = len(view.sel()) == 1
-
-            if all(s.empty() for s in view.sel()) or has_one_sel:
+            if all(s.empty() for s in view.sel()):
                 existing_regions = PyRegionSet (
                     normalized_regions( view.get_regions(KEY)) )
                 sels = [s for s in view.get_regions(KEY + '.selections' ) if s]
 
                 for sel in normalized_regions(sels):
-                    if existing_regions.contains(sel) and not has_one_sel:
+                    if existing_regions.contains(sel):
                         existing_regions.subtract(sel)
                     else:
                         existing_regions.add(sel)
