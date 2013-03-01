@@ -115,12 +115,6 @@
   "context": [],
   "keys": ["ctrl+alt+shift+8"]},
 
- // invert_and_shrink_wrap_regions
- {"args": {},
-  "command": "invert_and_shrink_wrap_regions",
-  "context": [],
-  "keys": ["ctrl+alt+shift+9"]},
-
  // half_selections
  {"args": {}, "command": "half_selections", "context": [], "keys": ["alt+w"]}
 ]
