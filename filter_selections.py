@@ -12,7 +12,7 @@ class SelectionFilterBase(sublime_plugin.TextCommand):
     def run(self, edit, **args):
         self.setup(self.view)
         filter_sels(self.view, self.filter_func)
-        view.show(view.sel())
+        self.view.show(self.view.sel())
     def setup(self, view):
         pass
 
